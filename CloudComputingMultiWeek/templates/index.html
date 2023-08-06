@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+        {% if message %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+        <h3 class="text-center">Please Login to your account.</h3><br>
+            <form class="col-sm-3" method="POST">
+                {{form.hidden_tag()}}
+                {{form.email_address(class="form-control", placeholder="Email Address",required="true")}}<br>
+                {{form.password(class="form-control", placeholder="Password",required="true")}}<br>
+                {{form.login(class="btn btn-primary")}}
+                <a class="btn btn-outline-primary ms-5" href="/signup">Please Signup Here.</a>
+            </form>
+{% endblock %}

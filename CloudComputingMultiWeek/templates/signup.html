@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+        {% if message %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+        {% if errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for error in errors %}
+            {{errors[error]}}<br>
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+        <h2 class="text-center">Register</h2><br>
+            <form action="/signup" class="col-sm-3" method="POST">
+                {{form.hidden_tag()}}
+                {{form.firstname(class="form-control", placeholder="First Name",required="true")}}<br>
+                {{form.lastname(class="form-control", placeholder="Last Name",required="true")}}<br>
+                {{form.email_address(class="form-control", type="email", placeholder="Email Address",required="true")}}<br>
+                {{form.password(class="form-control", placeholder="Password",required="true")}}<br>
+                {{form.confirm_password(class="form-control", placeholder="Confirm Password",required="true")}}<br>
+                {{form.signup(class="btn btn-outline-primary")}}
+                <h6>Password Rules</h6>
+                <li>Password must be greated the 8 character</li>
+            </form>
+{% endblock %}
